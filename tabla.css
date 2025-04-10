@@ -5,8 +5,8 @@
 }
 
 .tabla th {
-    background-color: #030a39; /* Encabezado con fondo azul */
-    color: rgb(247, 232, 232); /* Texto blanco en encabezados */
+    background-color: #030a39; 
+    color: rgb(247, 232, 232); 
     padding: 8px;
 }
 
@@ -18,15 +18,15 @@
 }
 
 .boton-editar {
-    color: white; /* Color del texto */
-    background-color: rgb(4, 10, 198); /* Color de fondo del botón */
-    padding: 5px 10px; /* Espaciado interno */
-    text-decoration: none; /* Quitar subrayado del enlace */
-    border-radius: 5px; /* Bordes redondeados */
+    color: white; 
+    background-color: rgb(4, 10, 198); 
+    padding: 5px 10px; 
+    text-decoration: none; 
+    border-radius: 5px; 
   }
 
   .boton-editar:hover {
-    background-color: rgb(1, 2, 84); /* Color al pasar el mouse */
+    background-color: rgb(1, 2, 84); 
   }
 
   .boton-eliminar {
