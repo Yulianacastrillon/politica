@@ -1,0 +1,41 @@
+.form-editar {
+    display: grid;
+    grid-template-columns: 1fr 1fr; 
+    column-gap: 20px; 
+    row-gap: 10px; 
+    width: 95%; 
+    margin: auto; 
+    background-color: rgb(3, 5, 83);
+    align-items: center;
+  }
+
+  .form-editar label {
+    font-weight: bold;
+    margin-right: 10px; 
+    white-space: nowrap; 
+    font-size: 14px;
+    color: #ffffff; 
+  }
+
+  .form-editar select, 
+  .form-editar input {
+    width: 60%;
+    padding: 5px;
+    border: 1px solid #0b94e9; 
+    border-radius: 5px; 
+    font-size: 13px;
+    flex: 1; 
+  }
+body{background-color: rgb(3, 5, 83);}
+
+.editar-titulo {color: #ffffff;}
+
+button[name="actualizar"] {
+    width: 120px; /* Ajusta el ancho del botón */
+    height: 40px; /* Ajusta la altura del botón */
+    background-color: rgb(9, 52, 224); /* Cambia 'green' por el color deseado */
+    color: white; /* Cambia el color del texto */
+    border: none; /* Opcional: quita el borde */
+    border-radius: 5px; /* Opcional: redondea las esquinas */
+    cursor: pointer; /* Cambia el puntero al pasar por encima */
+}

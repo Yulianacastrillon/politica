@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <title>Politica</title>
+
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: white; /* fondo del body */
+            height: 100vh; /* altura de todo */
+            display: flex;
+            flex-direction: column; /* elige si son columnas o filas */
+        }
+
+        
+        .fila-superior {
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 70px;
+            background-color: #000000f6; /* color del fondo */
+            padding: 0 20px;
+            border-bottom: 1px solid #ccc;
+            z-index: 2; /* esto sirve para que esta fila este arriba de todo */
+        }
+
+        .fila-superior button {
+  padding: 5px 10px;
+  font-size: 12px; /* tamaño de la letra */
+  border-radius: 4px; /* este es para redondear las esquinas */
+
+}
+
+
+
+        
+        .columna-izquierda {
+            position: absolute;
+            top: 30px; /* para colocar la columna abajo de la primera linea, para posisionar */
+            left: 0;
+            width: 100px;
+            height: calc(100vh - 10px); /* el largo de la columna */
+            background-color: #000000f6; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px 0;
+            border-right: 1px solid #ccc;
+            z-index: 1; /* este es para que la columna quede arriba de algo, en este caso la segunda fila */
+        }
+
+        /* este es para editar los iconos izquierdos */
+    .columna-izquierda i {
+        color: #1629b4; /* Color iconos */
+        transition: all 0.3s ease; /* editar el efecto */
+    }
+
+    .columna-izquierda i:hover {
+        color: #e0e1e9; 
+        transform: scale(1.2); 
+    }
+
+        
+        .fila-iconos {
+            margin-left: 100px; 
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            height: 70px;
+            background-color: #1e1e1e; 
+            padding: 0 20px;
+            border-bottom: 1px solid #ccc;
+            z-index: 0; /* esto es lo q la pone debajo de la columna */
+        }
+
+        /* editar los iconos de arriba */
+        .fila-iconos i {
+    color: #e8e8ee; 
+    transition: all 0.3s ease; 
+}
+
+.fila-iconos i:hover {
+    color: #1743d4; 
+    transform: scale(1.2); 
+}
+
+       
+        .area-principal {
+            flex-grow: 1;
+            margin-left: 80px; 
+            background-color: #4d4c4c; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            width: auto;
+            height: auto;
+        }
+
+        /* formulario */
+        form {
+            background: linear-gradient(to bottom, #0d1871, #010417); /* fondo del formulario */
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+            width: 80%;
+            height: 500px;
+        }
+
+        .form-title {
+  text-align: center;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 12px; 
+  color: #ffffff;
+}
+      
+  .form-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* hacer 2 columnas */
+    column-gap: 20px; /* el espacio de las columnas */
+    row-gap: 12px; /* espacio de las filas */
+  }
+
+  .field-container {
+    display: flex;
+    align-items: center; 
+    flex-direction: row; /* pone las letras al lado del input/select, para poner rriba se usa column en lugar de row */
+  }
+
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    font-size: 10px; 
+  margin: 0; 
+  white-space: nowrap; /* pone el texto de seguido, no con enter  */
+  font-size: 15px;
+  color: #ccc;
+  }
+
+  select, input {
+    width: 100%;
+    padding: 5px;
+    border: 1px solid #0b94e9;
+    border-radius: 5px;
+    font-size: 13px;
+    flex: 1;
+  }
+
+  .button-container {
+    grid-column: 1 / 2; 
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+
+  button {
+    padding: 5px 10px;
+    background-color: #007BFF;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+
+  button.cancel-button {
+    background-color: #860303;
+  }
+
+  button:hover {
+    background-color: #0056b3;
+  }
+
+  button.cancel-button:hover {
+    background-color: #f90202;
+  }
+
+  .registros {
+    color: rgb(9, 2, 89); 
+    text-align: center; 
+    font-size: 24px;
+    font-weight: bold;
+}
+        
+    </style>
+</head>
+<body>
+    
+    <div class="fila-superior">
+        <button class="btn btn-primary me-2">Cuenta</button>
+        <button class="btn btn-danger">Cerrar sesión</button>
+    </div>
+
+    
+    <div class="columna-izquierda">
+        <i class="bi bi-people-fill mb-3" style="font-size: 2rem;"></i>
+        <i class="bi bi-list mb-3" style="font-size: 2rem;"></i>
+        <i class="bi bi-database-fill-add mb-3" style="font-size: 2rem;"></i>
+    </div>
+
+    
+    <div class="fila-iconos">
+        <i class="bi bi-person-fill-add me-3" style="font-size: 2rem;"></i>
+        <i class="bi bi-bar-chart-fill me-3" style="font-size: 2rem;"></i>
+        <i class="bi bi-person-lines-fill me-3" style="font-size: 2rem;"></i>
+        <i class="bi bi-person-rolodex" style="font-size: 2rem;"></i>
+    </div>
+
+    
+    <div class="area-principal">
+        
+        <form action="guardar.php" method="POST" id="miFormulario">
+            <h4 class="form-title">Título del Formulario</h4>
+            <div class="form-container">
+                    
+                    <div class="field-container">
+                        <label for="tipo">Tipo:</label>
+                        <select id="tipo" name="tipo">
+                            <option value="">Documento de identidad</option>
+                            <option value="cc">Cedula de ciudadania</option>
+                            <option value="ti">Tarjeta de identidad</option>
+                            <option value="ce">Cedula de extrangeria</option>
+                        </select>
+                    </div>
+
+                    <div class="field-container">
+                        <label for="documento">Nro Documento:</label>
+                        <input type="number" id="documento" name="documento">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="nombres">Nombres:</label>
+                        <input type="text" id="nombres" name="nombres">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="apellidos">Apellidos:</label>
+                        <input type="text" id="apellidos" name="apellidos">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="telefono">Telefono:</label>
+                        <input type="number" id="telefono" name="telefono">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="email">E-mail:</label>
+                        <input type="email" id="email" name="email">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="nacimiento">Fecha de Nacimiento:</label>
+                        <input type="date" id="nacimiento" name="nacimiento">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="estrato">Estrato:</label>
+                        <select id="estrato" name="estrato">
+                            <option value="">Seleccione</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                        </select>
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="barrio">Barrio:</label>
+                        <input type="text" id="barrio" name="barrio">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="sexo">Sexo:</label>
+                        <select id="sexo" name="sexo">
+                            <option value="">Seleccione</option>
+                            <option value="masculino">Masculino</option>
+                            <option value="femenino">Femenino</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="departamento">Departamento:</label>
+                        <select id="departamento" name="departamento" required>
+                            <option value="">Seleccione un departamento</option>
+                            <option value="Amazonas">Amazonas</option>
+                            <option value="Antioquia">Antioquia</option>
+                            <option value="Arauca">Arauca</option>
+                            <option value="Atlantico">Atlántico</option>
+                            <option value="Bolivar">Bolívar</option>
+                            <option value="Boyaca">Boyacá</option>
+                            <option value="Caldas">Caldas</option>
+                            <option value="Caqueta">Caquetá</option>
+                            <option value="Casanare">Casanare</option>
+                            <option value="Cauca">Cauca</option>
+                            <option value="Cesar">Cesar</option>
+                            <option value="Choco">Chocó</option>
+                            <option value="Cordoba">Córdoba</option>
+                            <option value="Cundinamarca">Cundinamarca</option>
+                            <option value="Guainia">Guainía</option>
+                            <option value="Guaviare">Guaviare</option>
+                            <option value="Huila">Huila</option>
+                            <option value="La Guajira">La Guajira</option>
+                            <option value="Magdalena">Magdalena</option>
+                            <option value="Meta">Meta</option>
+                            <option value="Nariño">Nariño</option>
+                            <option value="Norte de Santander">Norte de Santander</option>
+                            <option value="Putumayo">Putumayo</option>
+                            <option value="Quindio">Quindío</option>
+                            <option value="Risaralda">Risaralda</option>
+                            <option value="San Andres y Providencia">San Andrés y Providencia</option>
+                            <option value="Santander">Santander</option>
+                            <option value="Sucre">Sucre</option>
+                            <option value="Tolima">Tolima</option>
+                            <option value="Valle del Cauca">Valle del Cauca</option>
+                            <option value="Vaupes">Vaupés</option>
+                            <option value="Vichada">Vichada</option>
+                        </select>
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="municipio">Municipio:</label>
+                        <input type="text" id="municipio" name="municipio">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="direccion">Direccion de Residencia:</label>
+                        <input type="text" id="direccion" name="direccion">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="lider">Nombre del Líder:</label>
+                        <select id="lider" name="lider">
+                            <option value="elvia-milena">Seleccione</option>
+                            <option value="elvia-milena">Elvia Milena Sanjuán Dávila</option>
+                            <option value="nubia-carolina">Nubia Carolina Córdoba Curí</option>
+                            <option value="erasmo-elias">Erasmo Elías Zuleta Bechara</option>
+                            <option value="carlos-alberto">Carlos Alberto Posada</option>
+                            <option value="oscar-enrique">Óscar Enrique Sánchez Guerrero</option>
+                        </select>
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="lugar">Lugar de Votacion:</label>
+                        <input type="text" id="lugar" name="lugar">
+                    </div>
+            
+                    <div class="field-container">
+                        <label for="mesa">Mesa de Votación:</label>
+                        <select id="mesa" name="mesa" required>
+                            <option value="" selected>Seleccione</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                            <option value="5">5</option>
+                            <option value="6">6</option>
+                            <option value="7">7</option>
+                            <option value="8">8</option>
+                            <option value="9">9</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                    </div>
+            
+            <div class="field-container consentimiento">
+                <label for="autorizo">Autorizo el tratamiento de mis datos personales</label>
+                <input type="radio" id="autorizo" name="autorizo" required>
+            </div>
+            
+            <input type="text" id="id_personas" name="id_personas" style="visibility:hidden;">
+            
+                    
+            <div class="button-container">
+                <button type="submit">Enviar</button>
+                <button type="button" class="cancel-button">Cancelar</button>
+            </div>
+            </div>
+            </form>
+
+    </div>
+
+    <h2 class="registros">Registros</h2>
+    <iframe src="tabla.php" width="100%" height="300" style="border:none; background-color:#4717f7;"></iframe>
+
+</body>
+</html>

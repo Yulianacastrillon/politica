@@ -1,0 +1,42 @@
+.tabla {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+.tabla th {
+    background-color: #030a39; /* Encabezado con fondo azul */
+    color: rgb(247, 232, 232); /* Texto blanco en encabezados */
+    padding: 8px;
+}
+
+.tabla td {
+    padding: 4px;
+    border: 1px solid #000000; 
+    color: #000000; 
+    font-size: 14px;
+}
+
+.boton-editar {
+    color: white; /* Color del texto */
+    background-color: rgb(4, 10, 198); /* Color de fondo del botón */
+    padding: 5px 10px; /* Espaciado interno */
+    text-decoration: none; /* Quitar subrayado del enlace */
+    border-radius: 5px; /* Bordes redondeados */
+  }
+
+  .boton-editar:hover {
+    background-color: rgb(1, 2, 84); /* Color al pasar el mouse */
+  }
+
+  .boton-eliminar {
+    color: white;
+    background-color: rgb(165, 4, 4);
+    padding: 5px 10px;
+    text-decoration: none;
+    border-radius: 5px;
+  }
+
+  .boton-eliminar:hover {
+    background-color: rgb(86, 3, 3);
+  }
